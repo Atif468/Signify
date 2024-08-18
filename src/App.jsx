@@ -2,6 +2,7 @@ import Popup from "reactjs-popup";
 import SignaturePad from "react-signature-canvas";
 import { useRef } from "react";
 import ReactToPrint from "react-to-print";
+import Navbar from "./nav";
 
 function App() {
   const sigCanvas = useRef({});
@@ -32,8 +33,8 @@ function App() {
         }
         `}
       </style>
+      <Navbar />
       <div className="flex flex-col items-center justify-center min-h-screen">
-       
         <Popup
           trigger={
             <button className="h-16 w-40 rounded-md bg-orange-500">
@@ -41,45 +42,51 @@ function App() {
             </button>
           }
           closeOnDocumentClick={false}
+          modal
         >
           {(close) => (
-            <>
-              <h1 className="text-2xl font-bold mb-4">You can write here👇</h1>
-              <div ref={print} className="print-container border-2 border-gray-300 p-4 rounded-lg w-96 h-96">
-                <SignaturePad
-                  ref={sigCanvas}
-                  canvasProps={{
-                    className: "sigCanvas h-full w-full",
-                  }}
-                />
-              </div>
-              <div className="flex space-x-2 mt-4">
-                <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md"
-                  onClick={clear}
+            <div className="flex items-center justify-center min-h-screen">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h1 className="text-2xl font-bold mb-4">You can write here👇</h1>
+                <div
+                  ref={print}
+                  className="print-container border-2 border-gray-300 p-4 rounded-lg w-96 h-96"
                 >
-                  Clear
-                </button>
-                <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md"
-                  onClick={close}
-                >
-                  Close
-                </button>
-                <ReactToPrint
-                  trigger={() => {
-                    return (
-                      <button
-                        className="bg-blue-500 text-white px-4 py-2 rounded-md"
-                      >
-                        Download
-                      </button>
-                    );
-                  }}
-                  content={() => print.current}
-                />
+                  <SignaturePad
+                    ref={sigCanvas}
+                    canvasProps={{
+                      className: "sigCanvas h-full w-full",
+                    }}
+                  />
+                </div>
+                <div className="flex space-x-2 mt-4">
+                  <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                    onClick={clear}
+                  >
+                    Clear
+                  </button>
+                  <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                    onClick={close}
+                  >
+                    Close
+                  </button>
+                  <ReactToPrint
+                    trigger={() => {
+                      return (
+                        <button
+                          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                        >
+                          Download
+                        </button>
+                      );
+                    }}
+                    content={() => print.current}
+                  />
+                </div>
               </div>
-            </>
+            </div>
           )}
         </Popup>
       </div>

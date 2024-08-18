@@ -3,6 +3,7 @@ import SignaturePad from "react-signature-canvas";
 import { useRef } from "react";
 import ReactToPrint from "react-to-print";
 import Navbar from "./nav";
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const sigCanvas = useRef({});
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+    <Analytics />
       <style>
         {`
         @media print {

@@ -34,10 +34,10 @@ function App() {
         `}
       </style>
       <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 overflow-hidden">
         <Popup
           trigger={
-            <button className="h-16 w-40 rounded-md bg-orange-500">
+            <button className="h-16 w-40 rounded-md bg-orange-500 text-white">
               Open Signature Pad
             </button>
           }
@@ -45,12 +45,12 @@ function App() {
           modal
         >
           {(close) => (
-            <div className="flex items-center justify-center min-h-screen">
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h1 className="text-2xl font-bold mb-4">You can write here👇</h1>
+            <div className="flex items-center justify-center min-h-screen p-4 overflow-hidden">
+              <div className="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto w-full overflow-hidden">
+                <h1 className="text-2xl font-bold mb-4 text-center">You can write here👇</h1>
                 <div
                   ref={print}
-                  className="print-container border-2 border-gray-300 p-4 rounded-lg w-96 h-96"
+                  className="print-container border-2 border-gray-300 p-4 rounded-lg w-full h-80 sm:h-96 overflow-hidden"
                 >
                   <SignaturePad
                     ref={sigCanvas}
@@ -59,15 +59,15 @@ function App() {
                     }}
                   />
                 </div>
-                <div className="flex space-x-2 mt-4">
+                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-4">
                   <button
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md w-full sm:w-auto"
                     onClick={clear}
                   >
                     Clear
                   </button>
                   <button
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md w-full sm:w-auto"
                     onClick={close}
                   >
                     Close
@@ -76,7 +76,7 @@ function App() {
                     trigger={() => {
                       return (
                         <button
-                          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                          className="bg-blue-500 text-white px-4 py-2 rounded-md w-full sm:w-auto"
                         >
                           Download
                         </button>
